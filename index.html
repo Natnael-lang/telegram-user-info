@@ -31,13 +31,25 @@
     </div>
 
     <script>
-       
-       var search = window.Telegram.WebApp.initData
-          
-          console.log(search);
-        
+        // Check if the Telegram object is defined
+        if (typeof Telegram !== 'undefined' && Telegram.WebApp) {
+            const user = Telegram.WebApp.initDataUnsafe.user;
 
-        
+            // Log the user data for debugging
+            console.log('User Data:', user);
+
+            if (user) {
+                document.getElementById('username').textContent = 'Username: ' + (user.username || 'N/A');
+                document.getElementById('userId').textContent = 'User ID: ' + user.id;
+            } else {
+                document.getElementById('username').textContent = 'User data not available.';
+                document.getElementById('userId').textContent = 'User data not available.';
+            }
+        } else {
+            console.error('Telegram.WebApp is not defined. Make sure to open this web app in Telegram.');
+            document.getElementById('username').textContent = 'Telegram WebApp is not available.';
+            document.getElementById('userId').textContent = '';
+        }
     </script>
 </body>
 </html>
