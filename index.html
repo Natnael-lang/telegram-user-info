@@ -31,16 +31,15 @@
     </div>
 
     <script>
-        const t = Telegram.WebApp;
-
+       
         // Log the initDataUnsafe for debugging
-        console.log('Init Data Unsafe:', t.initDataUnsafe);
+        console.log('Init Data Unsafe:');
 
-        const user = t.initDataUnsafe.user;
+        const user = window.Telegram.WebApp.initDataUnsafe;
 
         if (user) {
-            document.getElementById('username').textContent = 'Username: ' + (user.username || 'N/A');
-            document.getElementById('userId').textContent = 'User ID: ' + user.id;
+            document.getElementById('username').textContent = 'Username: ' + (user || 'N/A');
+            document.getElementById('userId').textContent = 'User ID: ' + user;
         } else {
             document.getElementById('username').textContent = 'User data not available.';
             document.getElementById('userId').textContent = 'User data not available.';
