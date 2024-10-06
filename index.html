@@ -32,18 +32,12 @@
 
     <script>
        
-        // Log the initDataUnsafe for debugging
-        console.log('Init Data Unsafe:');
+       var search = Telegram.WebApp.initData
+          var converted = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
+          console.log(converted);
+         JSON.parse(converted.user)
 
-        const user = window.Telegram.WebApp.initDataUnsafe;
-
-        if (user) {
-            document.getElementById('username').textContent = 'Username: ' + (user || 'N/A');
-            document.getElementById('userId').textContent = 'User ID: ' + user;
-        } else {
-            document.getElementById('username').textContent = 'User data not available.';
-            document.getElementById('userId').textContent = 'User data not available.';
-        }
+        
     </script>
 </body>
 </html>
