@@ -30,10 +30,19 @@
 
     <script>
         const t = Telegram.WebApp;
-        const user = t.initDataUnsafe.user;
 
-        document.getElementById('username').textContent = 'Username: ' + (user.username || 'N/A');
-        document.getElementById('userId').textContent = 'User ID: ' + user.id;
+        // Log the initDataUnsafe for debugging
+        console.log('Init Data Unsafe:', t.initDataUnsafe);
+
+        const user = t.initDataUnsafe.user;
+        
+        if (user) {
+            document.getElementById('username').textContent = 'Username: ' + (user.username || 'N/A');
+            document.getElementById('userId').textContent = 'User ID: ' + user.id;
+        } else {
+            document.getElementById('username').textContent = 'User data not available.';
+            document.getElementById('userId').textContent = 'User data not available.';
+        }
     </script>
 </body>
 </html>
